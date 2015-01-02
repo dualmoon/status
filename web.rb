@@ -4,7 +4,7 @@ require 'net/http'
 set :public_folder, 'build'
 
 get '/' do
-  redirect '/index.html'
+  send_file 'build/index.html'
 end
 
 get '/psn' do
