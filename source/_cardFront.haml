@@ -1,0 +1,11 @@
+.box
+  .logo
+.box
+  = svcName
+  %br/
+  %div{:class => "status {{#{statusClass}}}"}
+    {{ #{statusClass} }}
+.box
+  .lastUpdatedContainer
+    %span.lastUpdated Last updated 
+    {{ #{lastUpdated} }}

@@ -1,0 +1,121 @@
+---
+title: Status
+---
+
+.container{"ng-controller" => "StatusCtrl"}
+  .row
+    .col-md-4.col-sm-6
+      #xbox.flip-container
+        .flipper
+          .front
+            = partial(:card, :locals => { :side => 'front', :svcName => "Xbox Live", :statusClass => 'xboxStatus', :lastUpdated => 'xboxLastUpdated', :selectorId => '#xbox', :clickFn => 'checkXboxStatus()', :checkingName => 'isCheckingXbox'})
+          .back
+            .box
+              .statusRow
+                Live Core Services:
+                .statusIcon
+                  %i.fa.fa-lg{:class => "fa-{{xboxCore}}", "ng-class"=>"{'fa-spin': isCheckingXbox}"}
+              .statusRow
+                Social and Gaming: 
+                .statusIcon
+                  %i.fa.fa-lg{:class => "fa-{{xboxSG}}", "ng-class"=>"{'fa-spin': isCheckingXbox}"}
+              .statusRow
+                Purchase and Content:
+                .statusIcon
+                  %i.fa.fa-lg{:class => "fa-{{xboxPC}}", "ng-class"=>"{'fa-spin': isCheckingXbox}"}
+              .statusRow
+                TV, Music, and Video:
+                .statusIcon
+                  %i.fa.fa-lg{:class => "fa-{{xboxMM}}", "ng-class"=>"{'fa-spin': isCheckingXbox}"}
+            .box
+              = partial(:toolbar, :locals => {:selectorId => '#xbox', :clickFn => 'checkXboxStatus()', :checkingName => 'isCheckingXbox'})
+    .col-md-4.col-sm-6
+      #psn.flip-container
+        .flipper
+          .front
+            .box
+              .logo
+            .box
+              Playstation Network
+              %br/
+              %div{:class => "status {{psnStatus}}"}
+                {{ psnStatus }}
+            .box
+              .lastUpdatedContainer
+                %span.lastUpdated Last updated 
+                {{ psnLastUpdated }}
+            .box
+              %ul.toolbar
+                %li
+                  %a{:onclick=>"$('#psn').toggleClass('flip')"}
+                    %i.fa.fa-info-circle.fa-2x
+                %li
+                  %a{"ng-click"=>"checkPSNStatus()", "ng-class"=>"{disabled: isCheckingPSN}"}
+                    %i.fa.fa-refresh.fa-2x{"ng-class"=>"{'fa-spin': isCheckingPSN}"}
+          .back
+            .box
+              .statusRow
+                Sony's last update: 
+                .statusIcon
+                  {{ psnUpdated }}
+                  %i.fa.fa-lg{:class => "fa-{{psnUpdatedI}}", "ng-class"=>"{'fa-spin': isCheckingPSN}"}
+            .box
+              %ul.toolbar
+                %li
+                  %a{:onclick=>"$('#psn').toggleClass('flip')"}
+                    %i.fa.fa-info-circle.fa-2x
+                %li
+                  %a{"ng-click"=>"checkPSNStatus()", "ng-class"=>"{disabled: isCheckingPSN}"}
+                    %i.fa.fa-refresh.fa-2x{"ng-class"=>"{'fa-spin': isCheckingPSN}"}
+    .col-md-4.col-sm-6
+      #steam.flip-container
+        .flipper
+          .front
+            = partial(:card, :locals => { :side => 'front', :svcName => "Steam", :statusClass => 'steamStatus', :lastUpdated => 'steamLastUpdated', :selectorId => '#steam', :clickFn => 'checkSteamStatus()', :checkingName => 'isCheckingSteam'})
+          .back
+            .box
+              .statusRow
+                {{ steamServersOn }} out of {{ steamServersTotal }} servers running
+            .box
+              = partial(:toolbar, :locals => {:selectorId => '#steam', :clickFn => 'checkSteamStatus()', :checkingName => 'isCheckingSteam'})
+    .col-md-4.col-sm-6
+      #wow.flip-container
+        .flipper
+          .front
+            .box
+              .logo
+            .box
+              World of Warcraft
+              %br/
+              %div{:class => "status {{wowStatus}}"}
+                {{ wowStatus }}
+            .box
+              .lastUpdatedContainer
+                %span.lastUpdated Last updated 
+                {{ wowLastUpdated }}
+            .box
+              %ul.toolbar
+                %li
+                  %a{:onclick=>"$('#wow').toggleClass('flip')"}
+                    %i.fa.fa-info-circle.fa-2x
+                %li
+                  %a{"ng-click"=>"checkWowStatus()", "ng-class"=>"{disabled: isCheckingWow}"}
+                    %i.fa.fa-refresh.fa-2x{"ng-class"=>"{'fa-spin': isCheckingWow}"}
+          .back
+            .box
+              .statusRow{"ng-show" => "wowClear"}
+                for the
+                %br/
+                horde!
+                /
+                  .statusIcon
+                    things
+                    %i.fa.fa-lg{:class => "fa-clock-o", "ng-class"=>"{'fa-spin': isCheckingWow}"}
+            .box
+              %ul.toolbar
+                %li
+                  %a{:onclick=>"$('#wow').toggleClass('flip')"}
+                    %i.fa.fa-info-circle.fa-2x
+                %li
+                  %a{"ng-click"=>"checkWowStatus()", "ng-class"=>"{disabled: isCheckingWow}"}
+                    %i.fa.fa-refresh.fa-2x{"ng-class"=>"{'fa-spin': isCheckingWow}"}

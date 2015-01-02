@@ -1,0 +1,7 @@
+%ul.toolbar
+  %li
+    %a{:onclick=>"$('#{selectorId}').toggleClass('flip')"}
+      %i.fa.fa-info-circle.fa-2x
+  %li
+    %a{"ng-click"=>"#{clickFn}", "ng-class"=>"{disabled: #{checkingName}}"}
+      %i.fa.fa-refresh.fa-2x{"ng-class"=>"{'fa-spin': #{checkingName}}"}
