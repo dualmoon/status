@@ -1,7 +1,7 @@
 require 'sinatra'
 require 'net/http'
 
-set :public_folder, File.dirname(__FILE__) + '/build'
+set :public_folder, 'build'
 
 get '/' do
   redirect '/index.html'
