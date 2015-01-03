@@ -2,14 +2,14 @@ require 'sinatra'
 require 'net/http'
 require 'rubygems'
 
-set :public, File.join(File.dirname(__FILE__),'build')
+set :public_folder, File.join(File.dirname(__FILE__),'build')
 
 get '/ping' do
   'pong'
 end
 
 get '/' do
-  send_file 'build/index.html'
+  send_file File.expand_path('index.html', settings.public_folder)
 end
 
 get '/psn' do
