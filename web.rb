@@ -3,6 +3,10 @@ require 'net/http'
 
 set :public_folder, 'build'
 
+get '/ping' do
+  'pong'
+end
+
 get '/' do
   send_file 'build/index.html'
 end
