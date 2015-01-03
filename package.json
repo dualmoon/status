@@ -1,0 +1,24 @@
+{
+  "name": "status",
+  "version": "0.1.0",
+  "description": "Status checker",
+  "main": "web.coffee",
+  "dependencies": {
+    "express": "^4.10.6",
+    "request": "^2.51.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dualmoon/status.git"
+  },
+  "author": "Ashley Luna <luna@airsi.de>",
+  "license": "None",
+  "bugs": {
+    "url": "https://github.com/dualmoon/status/issues"
+  },
+  "homepage": "https://github.com/dualmoon/status"
+}
