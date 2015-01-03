@@ -17,6 +17,7 @@ end
 
 group :production do
   gem "puma"
+  gem 'rack', '1.5.2'
 end
 
 gem "sinatra", "~>1.4.5"
