@@ -9,7 +9,7 @@ get '/ping' do
 end
 
 get '/' do
-  send_file File.join(File.dirname(__FILE__),'build','index.html')
+  redirect '/index.html'
 end
 
 get '/psn' do
