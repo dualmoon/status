@@ -14,10 +14,3 @@ group :development do
   # Windows does not come with time zone data
   gem "tzinfo-data", platforms: [:mswin, :mingw]
 end
-
-group :production do
-  gem "puma"
-  gem 'rack', '1.5.2'
-end
-
-gem "sinatra", "~>1.4.5"

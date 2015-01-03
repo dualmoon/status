@@ -22,3 +22,6 @@
 
 # Ignore openshift dotfiles
 /.openshift
+
+# Ignore node_modules
+/node_modules
