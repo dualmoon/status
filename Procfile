@@ -1,1 +1,1 @@
-web: rackup -p $PORT
+web: coffee web.coffee
