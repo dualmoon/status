@@ -2,14 +2,14 @@ require 'sinatra'
 require 'net/http'
 require 'rubygems'
 
-set :public_folder, File.join(File.dirname(__FILE__),'build')
+set :public, File.join(File.dirname(__FILE__),'build')
 
 get '/ping' do
   'pong'
 end
 
 get '/' do
-  redirect '/index.html'
+  send_file 'build/index.html'
 end
 
 get '/psn' do
