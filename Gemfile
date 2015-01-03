@@ -3,7 +3,6 @@
 source 'https://rubygems.org'
 
 group :development do
-
   gem "middleman", "~>3.3.7"
   
   # Live-reloading plugin

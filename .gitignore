@@ -19,3 +19,6 @@
 
 # Ignore Cloud9's config directory
 /.c9
+
+# Ignore openshift dotfiles
+/.openshift
