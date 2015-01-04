@@ -8,6 +8,10 @@ app.use '/', express.static("#{__dirname}/build")
 app.get '/ping', (req, res) ->
   res.send 'pong'
 
+app.get ['/Content/*','/shell/*','/euf/*'], (req, res) ->
+  res.header 'Content-Type', 'image/jpeg'
+  res.send()
+
 app.get '/psn', (req, res) ->
   request('https://support.us.playstation.com/app/answers/detail/a_id/237/').pipe(res)
 app.get '/xbox', (req, res) ->
