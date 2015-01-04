@@ -117,8 +117,10 @@ status = angular.module 'status', ['ui.bootstrap']
           checkStatus[service] $scope, $http
         ), time
     
-    (lastStatus[svc] = null
-    $scope.checkStatus[svc] = ->
-      check svc, minutes(15)
-    $scope.checkStatus[svc]()) for svc in ['xbox', 'wow', 'psn', 'steam', 'facebook']
+    fireCheckers = (svc) ->
+      lastStatus[svc] = null
+      $scope.checkStatus[svc] = ->
+        check svc, minutes(15)
+      $scope.checkStatus[svc]()
+    fireCheckers(svc) for svc in ['xbox', 'wow', 'psn', 'steam', 'facebook']
   ]
