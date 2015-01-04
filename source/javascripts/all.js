@@ -1,1 +1,3 @@
-//= require_tree .
+//= require _app
+//= require _topbar
+// require_tree .

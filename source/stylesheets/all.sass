@@ -13,6 +13,31 @@ body
   font-family: sans-serif
   margin-bottom: 40px
 
+.container
+  transition: margin-top 0.25s linear
+.topBar
+  position: absolute
+  transition: top 0.25s linear
+  top: -50px
+  left: 0
+  right: 0
+  width: 100%
+  margin: 0
+  padding: 0 100px
+  background-color: #333
+  color: #eee
+  font-family: 'Merriweather', serif
+  font-size: 1.3em
+  height: 50px
+  line-height: 50px
+  vertical-align: middle
+  text-align: left
+  & button
+    float: right
+    margin-top: 10px
+    &#enableNotifications
+      margin-right: 10px
+
 /* entire container, keeps perspective
 .flip-container
   perspective: 1000

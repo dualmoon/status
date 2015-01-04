@@ -2,6 +2,10 @@
 title: Status
 ---
 
+.topBar
+  %span This app can show notifications when server statuses change.
+  %button.btn.btn-sm.btn-danger#closeNotificationRequest No Thanks
+  %button.btn.btn-sm.btn-primary#enableNotifications Enable Desktop Notifications
 .container{"ng-controller" => "StatusCtrl"}
   .row
     .col-md-4.col-sm-6
