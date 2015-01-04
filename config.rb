@@ -19,6 +19,7 @@ page "/wow.html", :layout => false
 page "/psn.html", :layout => false
 page "/xbox.html", :layout => false
 page "/steam.html", :layout => false
+page "/fb.html", :layout => false
 #
 # With alternative layout
 # page "/path/to/file.html", :layout => :otherlayout
@@ -84,6 +85,7 @@ configure :build do
   ignore '/steam.haml'
   ignore '/psn.haml'
   ignore '/xbox.haml'
+  ignore '/fb.haml'
   # For example, change the Compass output style for deployment
   activate :minify_css
 

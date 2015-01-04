@@ -11,6 +11,6 @@ middleman build
 git add -f build/
 git commit -m "Deploying to Heroku"
 # Push it up to heroku, the -f ensures that heroku won't complain
-git push heroku -f deploy:master
+git push heroku-test -f deploy:master
 # Switch it back to master
 git checkout master

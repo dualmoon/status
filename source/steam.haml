@@ -1,1 +1,2 @@
-= Net::HTTP.get_response(URI("https://steamdb.info/api/SteamRailgun/")).body
+- require 'net/http'
+= Net::HTTP.get(URI("https://steamdb.info/api/SteamRailgun/"))

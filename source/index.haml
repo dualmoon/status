@@ -33,25 +33,7 @@ title: Status
       #psn.flip-container
         .flipper
           .front
-            .box
-              .logo
-            .box
-              Playstation Network
-              %br/
-              %div{:class => "status {{psnStatus}}"}
-                {{ psnStatus }}
-            .box
-              .lastUpdatedContainer
-                %span.lastUpdated Last updated 
-                {{ psnLastUpdated }}
-            .box
-              %ul.toolbar
-                %li
-                  %a{:onclick=>"$('#psn').toggleClass('flip')"}
-                    %i.fa.fa-info-circle.fa-2x
-                %li
-                  %a{"ng-click"=>"checkPSNStatus()", "ng-class"=>"{disabled: isCheckingPSN}"}
-                    %i.fa.fa-refresh.fa-2x{"ng-class"=>"{'fa-spin': isCheckingPSN}"}
+            = partial(:card, :locals => { :side => 'front', :svcName => "Playstation Network", :statusClass => 'psnStatus', :lastUpdated => 'psnLastUpdated', :selectorId => '#psn', :clickFn => 'checkPSNStatus()', :checkingName => 'isCheckingPSN'})
           .back
             .box
               .statusRow
@@ -60,13 +42,7 @@ title: Status
                   {{ psnUpdated }}
                   %i.fa.fa-lg{:class => "fa-{{psnUpdatedI}}", "ng-class"=>"{'fa-spin': isCheckingPSN}"}
             .box
-              %ul.toolbar
-                %li
-                  %a{:onclick=>"$('#psn').toggleClass('flip')"}
-                    %i.fa.fa-info-circle.fa-2x
-                %li
-                  %a{"ng-click"=>"checkPSNStatus()", "ng-class"=>"{disabled: isCheckingPSN}"}
-                    %i.fa.fa-refresh.fa-2x{"ng-class"=>"{'fa-spin': isCheckingPSN}"}
+              = partial(:toolbar, :locals => {:selectorId => '#psn', :clickFn => 'checkPSNStatus()', :checkingName => 'isCheckingPSN'})
     .col-md-4.col-sm-6
       #steam.flip-container
         .flipper
@@ -82,25 +58,7 @@ title: Status
       #wow.flip-container
         .flipper
           .front
-            .box
-              .logo
-            .box
-              World of Warcraft
-              %br/
-              %div{:class => "status {{wowStatus}}"}
-                {{ wowStatus }}
-            .box
-              .lastUpdatedContainer
-                %span.lastUpdated Last updated 
-                {{ wowLastUpdated }}
-            .box
-              %ul.toolbar
-                %li
-                  %a{:onclick=>"$('#wow').toggleClass('flip')"}
-                    %i.fa.fa-info-circle.fa-2x
-                %li
-                  %a{"ng-click"=>"checkWowStatus()", "ng-class"=>"{disabled: isCheckingWow}"}
-                    %i.fa.fa-refresh.fa-2x{"ng-class"=>"{'fa-spin': isCheckingWow}"}
+            = partial(:card, :locals => { :side => 'front', :svcName => "World of Warcraft", :statusClass => 'wowStatus', :lastUpdated => 'wowLastUpdated', :selectorId => '#wow', :clickFn => 'checkWowStatus()', :checkingName => 'isCheckingWow'})
           .back
             .box
               .statusRow{"ng-show" => "wowClear"}
@@ -112,10 +70,18 @@ title: Status
                     things
                     %i.fa.fa-lg{:class => "fa-clock-o", "ng-class"=>"{'fa-spin': isCheckingWow}"}
             .box
-              %ul.toolbar
-                %li
-                  %a{:onclick=>"$('#wow').toggleClass('flip')"}
-                    %i.fa.fa-info-circle.fa-2x
-                %li
-                  %a{"ng-click"=>"checkWowStatus()", "ng-class"=>"{disabled: isCheckingWow}"}
-                    %i.fa.fa-refresh.fa-2x{"ng-class"=>"{'fa-spin': isCheckingWow}"}
+              = partial(:toolbar, :locals => {:selectorId => '#wow', :clickFn => 'checkWowStatus()', :checkingName => 'isCheckingWow'})
+    .col-md-4.col-sm-6
+      #facebook.flip-container
+        .flipper
+          .front
+            = partial(:card, :locals => { :side => 'front', :svcName => "Facebook", :statusClass => 'facebookStatus', :lastUpdated => 'facebookLastUpdated', :selectorId => '#facebook', :clickFn => 'checkFacebookStatus()', :checkingName => 'isCheckingFacebook'})
+          .back
+            .box
+              .statusRow
+                /
+                  .statusIcon
+                    things
+                    %i.fa.fa-lg{:class => "fa-clock-o", "ng-class"=>"{'fa-spin': isCheckingFacebook}"}
+            .box
+              = partial(:toolbar, :locals => {:selectorId => '#facebook', :clickFn => 'checkFacebookStatus()', :checkingName => 'isCheckingFacebook'})

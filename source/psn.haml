@@ -1,1 +1,2 @@
-= Net::HTTP.get_response(URI("https://support.us.playstation.com/app/answers/detail/a_id/237/")).body
+- require 'net/http'
+= Net::HTTP.get(URI("https://support.us.playstation.com/app/answers/detail/a_id/237/"))

@@ -21,5 +21,7 @@ app.get '/steam', (req, res) ->
     }).pipe(res)
 app.get '/wow', (req, res) ->
   request('https://us.api.battle.net/wow/realm/status?locale=en_US&apikey=ukm5wf6j68hwj35k57gr7tesgz8pe9k4').pipe(res)
+app.get '/fb', (req, res) ->
+  request('https://www.facebook.com/feeds/api_status.php').pipe(res)
 
 app.listen process.env.PORT||3000

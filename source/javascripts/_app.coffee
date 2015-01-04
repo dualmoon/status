@@ -32,7 +32,6 @@ checkWowStatus = ($scope, $http) ->
   $scope.wowStatus = 'checking...'
   $http.get('/wow')
     .success (data, status, header, config) ->
-      $scope.wowStatus = 'unknown'
       realmStatus = []
       for realm in data.realms
         realmStatus.push
@@ -58,6 +57,20 @@ checkWowStatus = ($scope, $http) ->
     .then ->
       $scope.isCheckingWow = false
       $scope.wowLastUpdated = "#{new Date().toDateString()} at #{new Date().toLocaleTimeString()}"
+checkFacebookStatus = ($scope, $http, $timeout) ->
+  $scope.isCheckingFacebook = true
+  $scope.facebookStatus = 'checking...'
+  $http.get('/fb')
+    .success (facebook, s, h, c) ->
+      if facebook.current.health = 1
+        $scope.facebookStatus = 'online'
+      else
+        $scope.facebookStatus = 'offline'
+    .error (d,s,h,c) ->
+      $scope.facebookStatus = 'unknown'
+    .then ->
+      $scope.isCheckingFacebook = false
+      $scope.facebookLastUpdated = "#{new Date().toDateString()} at #{new Date().toLocaleTimeString()}"
 checkSteamStatus = ($scope, $http, $timeout) ->
   $scope.isCheckingSteam = true
   $scope.steamStatus = 'checking...'
@@ -124,7 +137,8 @@ status.controller 'StatusCtrl', ($scope, $http, $timeout) ->
   checkXboxStatus($scope, $http, $timeout)
   checkWowStatus($scope, $http, $timeout)
   checkSteamStatus($scope, $http, $timeout)
-  $scope.isCheckingXbox = $scope.isCheckingPSN = $scope.isCheckingWow = $scope.ischeckingSteam = true
+  checkFacebookStatus($scope, $http, $timeout)
+  $scope.isCheckingXbox = $scope.isCheckingPSN = $scope.isCheckingWow = $scope.isCheckingSteam = $scope.isCheckingFacebook = true
   $scope.checkXboxStatus = ->
     if not $scope.isCheckingXbox
       checkXboxStatus($scope, $http, $timeout)
@@ -137,3 +151,6 @@ status.controller 'StatusCtrl', ($scope, $http, $timeout) ->
   $scope.checkSteamStatus = ->
     if not $scope.isCheckingSteam
       checkSteamStatus($scope, $http, $timeout)
+  $scope.checkFacebookStatus = ->
+    if not $scope.isCheckingFacebook
+      checkFacebookStatus($scope, $http, $timeout)
