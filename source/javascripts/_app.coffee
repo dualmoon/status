@@ -62,7 +62,7 @@ checkFacebookStatus = ($scope, $http, $timeout) ->
   $scope.facebookStatus = 'checking...'
   $http.get('/fb')
     .success (facebook, s, h, c) ->
-      if facebook.current.health = 1
+      if facebook.current.health is 1
         $scope.facebookStatus = 'online'
       else
         $scope.facebookStatus = 'offline'
