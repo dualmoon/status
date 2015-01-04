@@ -102,7 +102,7 @@ status = angular.module 'status', ['ui.bootstrap']
           $scope.status[service] = 'unknown'
           console.log "Failed to get status information for service `#{service}`"
         .then ->
-          if Notify.permissionLevel is 'granted'
+          if Notify.permissionLevel is 'granted' and lastStatus[service] isnt null
             if $scope.status[service] isnt lastStatus[service]
               notifier[service].options.body = "Service status changed.\nfrom: #{lastStatus[service]}\nto: #{$scope.status[service]}"
               notifier[service].show()
