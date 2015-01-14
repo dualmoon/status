@@ -47,6 +47,7 @@ status = angular.module 'status', ['ui.bootstrap']
             $scope.status.wow = 'most online'
         else
           $scope.status.wow = 'unknown'
+        $('#serversOffline').empty()
         if numOff > 0
           icon = '<div class="statusIcon"><i class="fa fa-lg fa-close"></i></div>'
           divOpen = '<div class="statusRow">'
@@ -55,7 +56,6 @@ status = angular.module 'status', ['ui.bootstrap']
             $('#serversOffline').append("#{divOpen}#{server.realm}#{divClose}")
             $('#serversOffline').scroller("reset");
         else
-          $('#serversOffline').empty()
     checkStatus.xbox = ->
       $scope.xboxCore = $scope.xboxSG = $scope.xboxPC = $scope.xboxMM = 'circle-o-notch'
       httpGet '/xbox', 'xbox', (xbox) ->
