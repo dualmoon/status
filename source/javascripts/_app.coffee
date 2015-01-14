@@ -24,21 +24,38 @@ status = angular.module 'status', ['ui.bootstrap']
           realmStatus.push
             realm: realm.name
             status: realm.status
+        window.wow = {}
+        window.wow.status = realmStatus
         numTot = realmStatus.length
-        numOff = _.where(realmStatus, {'status':false}).length
+        srvOff = _.where(realmStatus, {'status':false})
+        numOff = srvOff.length
+        window.wow.srvOff = srvOff
+        window.wow.numOff = numOff
         if numOff is numTot
-          $scope.status.wow = 'offline'
+          $scope.status.wow = 'all offline'
         else if numOff is 0
-          $scope.status.wow = 'online'
+          $scope.status.wow = 'all online'
           $scope.wowClear = true
         else if numOff > 0
           offPct = (numOff/numTot)*100
+          window.wow.offPct = offPct
           if offPct > 70
-            $scope.status.wow = 'largely offline'
+            $scope.status.wow = 'most offline'
           else if offPct > 10
-            $scope.status.wow = 'partly offline'
+            $scope.status.wow = 'many offline'
+          else
+            $scope.status.wow = 'most online'
         else
           $scope.status.wow = 'unknown'
+        if numOff > 0
+          icon = '<div class="statusIcon"><i class="fa fa-lg fa-close"></i></div>'
+          divOpen = '<div class="statusRow">'
+          divClose = "#{icon}</div>"
+          for server in srvOff
+            $('#serversOffline').append("#{divOpen}#{server.realm}#{divClose}")
+            $('#serversOffline').scroller("reset");
+        else
+          $('#serversOffline').empty()
     checkStatus.xbox = ->
       $scope.xboxCore = $scope.xboxSG = $scope.xboxPC = $scope.xboxMM = 'circle-o-notch'
       httpGet '/xbox', 'xbox', (xbox) ->
@@ -66,7 +83,10 @@ status = angular.module 'status', ['ui.bootstrap']
     checkStatus.psn = ->
       httpGet '/psn', 'psn', (psn) ->
         result = angular.element('<div></div>').html(psn)
-        status = $('[id^=rn_PSNStatusTicker] span',result)[0].childNodes[1].textContent.trim()
+        status = $('[id^=rn_PSNStatusTicker] span', result)
+        window.psn = {}
+        window.psn.status = status
+        status = status.text().trim().split(' ')[2]
         $scope.psnUpdated = $('.rn_AnswerDetailInfo_updated',result).text().split(' ')[1]
         $scope.psnUpdatedI = 'clock-o'
         if status.toLowerCase() is 'offline'

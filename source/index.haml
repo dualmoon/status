@@ -65,7 +65,8 @@ title: Status
             = partial(:card, :locals => { :side => 'front', :svcName => "World of Warcraft", :statusClass => 'status.wow', :lastUpdated => 'lastUpdated.wow', :selectorId => '#wow', :clickFn => 'checkStatus.wow()', :checkingName => 'isChecking.wow'})
           .back
             .box
-              .statusRow{"ng-show" => "wowClear"}
+              #serversOffline.wowOffline{"ng-hide" => "wowClear"}
+              .statusRow.wowOnline{"ng-show" => "wowClear"}
                 for the
                 %br/
                 horde!
