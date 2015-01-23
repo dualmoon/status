@@ -12,7 +12,7 @@ title: Status
       #xbox.flip-container
         .flipper
           .front
-            = partial(:card, :locals => { :side => 'front', :svcName => "Xbox Live", :statusClass => 'status.xbox', :lastUpdated => 'lastUpdated.xbox', :selectorId => '#xbox', :clickFn => 'checkStatus.xbox()', :checkingName => 'isChecking.xbox'})
+            = partial(:card, :locals => { :side => 'front', :svcName => "Xbox Live", :statusClass => 'status.xbox', :lastUpdated => 'lastUpdated.xbox', :selectorId => '#xbox', :clickFn => 'checkStatus.xbox()', :checkingName => 'isChecking.xbox', :statusURL => 'http://support.xbox.com/en-US/xbox-live-status'})
           .back
             .box
               .statusRow
@@ -32,12 +32,12 @@ title: Status
                 .statusIcon
                   %i.fa.fa-lg{:class => "fa-{{xboxMM}}", "ng-class"=>"{'fa-spin': isChecking.xbox}"}
             .box
-              = partial(:toolbar, :locals => {:selectorId => '#xbox', :clickFn => 'checkStatus.xbox()', :checkingName => 'isChecking.xbox'})
+              = partial(:toolbar, :locals => {:selectorId => '#xbox', :clickFn => 'checkStatus.xbox()', :checkingName => 'isChecking.xbox', :statusURL => 'http://support.xbox.com/en-US/xbox-live-status'})
     .col-md-4.col-sm-6
       #psn.flip-container
         .flipper
           .front
-            = partial(:card, :locals => { :side => 'front', :svcName => "Playstation Network", :statusClass => 'status.psn', :lastUpdated => 'lastUpdated.psn', :selectorId => '#psn', :clickFn => 'checkStatus.psn()', :checkingName => 'isChecking.psn'})
+            = partial(:card, :locals => { :side => 'front', :svcName => "Playstation Network", :statusClass => 'status.psn', :lastUpdated => 'lastUpdated.psn', :selectorId => '#psn', :clickFn => 'checkStatus.psn()', :checkingName => 'isChecking.psn', :statusURL => 'https://support.us.playstation.com/app/answers/detail/a_id/237/'})
           .back
             .box
               .statusRow
@@ -46,23 +46,23 @@ title: Status
                   {{ psnUpdated }}
                   %i.fa.fa-lg{:class => "fa-{{psnUpdatedI}}", "ng-class"=>"{'fa-spin': isChecking.psn}"}
             .box
-              = partial(:toolbar, :locals => {:selectorId => '#psn', :clickFn => 'checkStatus.psn()', :checkingName => 'isChecking.psn'})
+              = partial(:toolbar, :locals => {:selectorId => '#psn', :clickFn => 'checkStatus.psn()', :checkingName => 'isChecking.psn', :statusURL => 'https://support.us.playstation.com/app/answers/detail/a_id/237/'})
     .col-md-4.col-sm-6
       #steam.flip-container
         .flipper
           .front
-            = partial(:card, :locals => { :side => 'front', :svcName => "Steam", :statusClass => 'status.steam', :lastUpdated => 'lastUpdated.steam', :selectorId => '#steam', :clickFn => 'checkStatus.steam()', :checkingName => 'isChecking.steam'})
+            = partial(:card, :locals => { :side => 'front', :svcName => "Steam", :statusClass => 'status.steam', :lastUpdated => 'lastUpdated.steam', :selectorId => '#steam', :clickFn => 'checkStatus.steam()', :checkingName => 'isChecking.steam', :statusURL => 'http://steamstat.us/'})
           .back
             .box
               .statusRow
                 {{ steamServersOn }} out of {{ steamServersTotal }} servers running
             .box
-              = partial(:toolbar, :locals => {:selectorId => '#steam', :clickFn => 'checkStatus.steam()', :checkingName => 'isChecking.steam'})
+              = partial(:toolbar, :locals => {:selectorId => '#steam', :clickFn => 'checkStatus.steam()', :checkingName => 'isChecking.steam', :statusURL => 'http://steamstat.us/'})
     .col-md-4.col-sm-6
       #wow.flip-container
         .flipper
           .front
-            = partial(:card, :locals => { :side => 'front', :svcName => "World of Warcraft", :statusClass => 'status.wow', :lastUpdated => 'lastUpdated.wow', :selectorId => '#wow', :clickFn => 'checkStatus.wow()', :checkingName => 'isChecking.wow'})
+            = partial(:card, :locals => { :side => 'front', :svcName => "World of Warcraft", :statusClass => 'status.wow', :lastUpdated => 'lastUpdated.wow', :selectorId => '#wow', :clickFn => 'checkStatus.wow()', :checkingName => 'isChecking.wow', :statusURL => 'http://us.battle.net/wow/en/status'})
           .back
             .box
               #serversOffline.wowOffline{"ng-hide" => "wowClear"}
@@ -75,12 +75,12 @@ title: Status
                     things
                     %i.fa.fa-lg{:class => "fa-clock-o", "ng-class"=>"{'fa-spin': isChecking.wow}"}
             .box
-              = partial(:toolbar, :locals => {:selectorId => '#wow', :clickFn => 'checkStatus.wow()', :checkingName => 'isChecking.wow'})
+              = partial(:toolbar, :locals => {:selectorId => '#wow', :clickFn => 'checkStatus.wow()', :checkingName => 'isChecking.wow', :statusURL => 'http://us.battle.net/wow/en/status'})
     .col-md-4.col-sm-6
       #facebook.flip-container
         .flipper
           .front
-            = partial(:card, :locals => { :side => 'front', :svcName => "Facebook", :statusClass => 'status.facebook', :lastUpdated => 'lastUpdated.facebook', :selectorId => '#facebook', :clickFn => 'checkStatus.facebook()', :checkingName => 'isChecking.facebook'})
+            = partial(:card, :locals => { :side => 'front', :svcName => "Facebook", :statusClass => 'status.facebook', :lastUpdated => 'lastUpdated.facebook', :selectorId => '#facebook', :clickFn => 'checkStatus.facebook()', :checkingName => 'isChecking.facebook', :statusURL => 'http://developers.facebook.com/live_status'})
           .back
             .box
               .statusRow
@@ -89,4 +89,4 @@ title: Status
                     things
                     %i.fa.fa-lg{:class => "fa-clock-o", "ng-class"=>"{'fa-spin': isChecking.facebook}"}
             .box
-              = partial(:toolbar, :locals => {:selectorId => '#facebook', :clickFn => 'checkStatus.facebook()', :checkingName => 'isChecking.facebook'})
+              = partial(:toolbar, :locals => {:selectorId => '#facebook', :clickFn => 'checkStatus.facebook()', :checkingName => 'isChecking.facebook', :statusURL => 'http://developers.facebook.com/live_status'})

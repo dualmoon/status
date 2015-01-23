@@ -5,3 +5,6 @@
   %li
     %a{"ng-click"=>"#{clickFn}", "ng-class"=>"{disabled: #{checkingName}}"}
       %i.fa.fa-refresh.fa-2x{"ng-class"=>"{'fa-spin': #{checkingName}}"}
+  %li
+    %a{:href=>"#{statusURL}"}
+      %i.fa.fa-globe.fa-2x
