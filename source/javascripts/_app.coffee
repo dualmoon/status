@@ -83,19 +83,18 @@ status = angular.module 'status', ['ui.bootstrap']
     checkStatus.psn = ->
       httpGet '/psn', 'psn', (psn) ->
         result = angular.element('<div></div>').html(psn)
-        status = $('[id^=rn_PSNStatusTicker] span', result)
+        status = $('[id^=rn_PSNStatusTicker]', result).text().trim()
         window.psn = {}
         window.psn.status = status
-        status = status.text().trim().split(' ')[2]
         $scope.psnUpdated = $('.rn_AnswerDetailInfo_updated',result).text().split(' ')[1]
         $scope.psnUpdatedI = 'clock-o'
-        if status.toLowerCase() is 'offline'
+        if status.search(/offline/gi) > -1
           $scope.status.psn = 'offline'
-        else if status.toLowerCase() is 'online'
+        else if status.search(/online/gi) > -1
           $scope.status.psn = 'online'
-        else if status.toLowerCase() is 'intermittent connectivity'
+        else if status.search(/intermittent/gi) > -1
           $scope.status.psn = 'intermittent'
-        else if status.toLowerCase() is 'heavy network traffic'
+        else if status.search(/heavy.*traffic/gi) > -1
           $scope.status.psn = 'heavy network traffic'
         else
           $scope.status.psn = 'Unknown'
